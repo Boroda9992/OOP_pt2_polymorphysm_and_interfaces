@@ -28,5 +28,17 @@ public class Main {
             System.out.println();
 
 
+            station.checkBicycle(bicycle);
+            station.checkBicycle(bicycle2);
+            System.out.println();
+
+            station.checkCar(car);
+            station.checkCar(car2);
+            System.out.println();
+
+            station.checkTruck(truck);
+            station.checkTruck(truck2);
+            System.out.println();
+
     }
 }
