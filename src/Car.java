@@ -1,17 +1,21 @@
 /**
- *  Класс, описывающий обслуживание седана, на нашей станции обслуживания.
- *  Реализует из интерфейса VehicleService методы:
- *   updateTyres()
- *   checkEngine()
+ * Класс автомобилей, наследующийся от Vehicle.
+ * Реализует: ServiceEngine, ServiceTyres
+ * Перегружает: checkEngine(), updateTyres()
  */
-public class Car extends Vehicle implements VehicleService {
+public class Car extends Vehicle implements ServiceEngine, ServiceTyres {
     public Car(String modelName, int wheelsCount) {
         super(modelName, wheelsCount);
     }
 
     @Override
-    public void updateTyres() {System.out.println("[" + getModelName() + "] " + getWheelsCount() + " Tyres updated!");}
-
+    public void updateTyres() {
+        for (int i = 0; i < getWheelsCount(); i++) {
+        System.out.println("Car tyre " + (i + 1) + " updated!");
+        }
+    }
     @Override
-    public void checkEngine() {System.out.println("[" + getModelName() + "] Engine checked!");}
+    public void checkEngine() {
+        System.out.println("Car engine checked!");
+    }
 }

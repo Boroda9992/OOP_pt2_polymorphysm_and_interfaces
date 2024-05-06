@@ -1,9 +1,9 @@
 /**
- * Абстрактный родительский класс, присущий любому транспортному средству, с которым работает программа.
- * Содержит параметры (String) modelName и (int) wheelsCount
- * Доступ к переменным через геттеры\сеттеры
+ * Абстрактный класс транспортного средства.
+ * Поля: String modelName; int wheelsCount.
+ * Реализует интерфейсы: ServiceTyres, ServiceEngine, ServiceTrailer
  */
-public abstract class Vehicle implements VehicleService {
+public abstract class Vehicle implements ServiceTyres, ServiceEngine, ServiceTrailer {
         private String modelName;
         private int wheelsCount;
 

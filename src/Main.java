@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
+
             Car car = new Car("car1", 4);
             Car car2 = new Car("car2", 4);
 
@@ -12,33 +13,20 @@ public class Main {
             Bicycle bicycle = new Bicycle("bicycle1", 2);
             Bicycle bicycle2 = new Bicycle("bicycle2", 2);
 
+            ServiceStation serviceStation = new ServiceStation();
 
-            ServiceStation station = new ServiceStation();
-            station.check(car);
+            bicycle2.updateTyres();
             System.out.println();
-            station.check(car2);
+            car2.updateTyres();
             System.out.println();
-            station.check(bicycle);
-            System.out.println();
-            station.check(bicycle2);
-            System.out.println();
-            station.check(truck);
-            System.out.println();
-            station.check(truck2);
-            System.out.println();
+            truck2.updateTyres();
 
-
-            station.checkBicycle(bicycle);
-            station.checkBicycle(bicycle2);
             System.out.println();
-
-            station.checkCar(car);
-            station.checkCar(car2);
+            serviceStation.check(bicycle);
             System.out.println();
-
-            station.checkTruck(truck);
-            station.checkTruck(truck2);
+            serviceStation.check(car);
             System.out.println();
-
+            serviceStation.check(truck);
+            System.out.println();
     }
 }

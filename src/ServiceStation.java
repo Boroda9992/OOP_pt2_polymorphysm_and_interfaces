@@ -1,45 +1,43 @@
-public class ServiceStation implements VehicleService {
+/**
+ * Класс сервисной станции - для методов, применяемых непосредственно к объектам-наследникам Vehicle.
+ * Реализует: ServiceTrailer, ServiceEngine, ServiceTyres
+ */
+public class ServiceStation implements ServiceTyres, ServiceEngine, ServiceTrailer {
+
     /**
-     * Общий метод для любого вида транспорта. Применяет все методы интерфейса VehicleService.
-     * Будет полезен в том случае, если для нас нет разницы, что именно мы обслуживаем, а мы просто реализуем набор методов - инструментов в нашей мастерской.
-     * Подход плох тем, что в реальной жизни сменить покрышки на велосипеде и на грузовике - это две разных замены покрышек, за разную стоимость, требующую разного набора инструментов и т.д.
-     * Со временем, это приведет к тому, что у нас будет один метод-свалка check, перебирающий все доступные нам операции над транспортным средством, только ради того, чтобы выполнить одну-две.
-     * @param vehicle - абстрактный родительский класс, присущий любому транспортному средству, с которым работает программа.
+     * Метод проверяет транспортное средство и применяет к нему методы, в зависимости от его класса.
+     * @param vehicle - принимает в качестве параметра объект класса-наследника Vehicle.
      */
     public void check(Vehicle vehicle) {
-        vehicle.updateTyres();
-        vehicle.checkEngine();
-        vehicle.checkTrailer();
+//        if (vehicle.getClass() == Bicycle.class) {
+//            vehicle.updateTyres();
+//        } else if (vehicle.getClass() == Car.class) {
+//            vehicle.updateTyres();
+//            vehicle.checkEngine();
+//        } else if (vehicle.getClass() == Truck.class) {
+//            vehicle.updateTyres();
+//            vehicle.checkEngine();
+//            vehicle.checkTrailer();
+//        } else {
+//            throw new RuntimeException("Vehicle type is unknown!");
+//        }
+
+        String vehicleClassName = String.valueOf(vehicle.getClass());
+        switch (vehicleClassName){
+            case "class Bicycle":
+                vehicle.updateTyres();
+                break;
+            case "class Car":
+                vehicle.updateTyres();
+                vehicle.checkEngine();
+                break;
+            case "class Truck":
+                vehicle.updateTyres();
+                vehicle.checkEngine();
+                vehicle.checkTrailer();
+                break;
+        }
+
     }
 
-    /**
-     * Специализированный метод для обслуживания велосипедов.
-     * Может быть полезен, если у нас появятся разные типы велосипедов, скидка для велосипедистов, появится необходимость выгружать бухгалтерскую отчетность по видам транспорта (потому что там налог, нарпимер, разный) и т.д.
-     * Перебирает все операции, которые мы можем проводить над велосипедом.
-     * @param bicycle - объект класса Bicycle, потомка Vehicle
-     */
-    public void checkBicycle (Bicycle bicycle){
-        bicycle.updateTyres();
-    }
-
-    /**
-     * Специализированный метод для обслуживания седанов.
-     * Перебирает все операции, которые мы можем проводить над седаном.
-     * @param car - объект класса Car, потомка Vehicle
-     */
-    public void checkCar (Car car){
-        car.updateTyres();
-        car.checkEngine();
-    }
-
-    /**
-     * Специализированный метод для обслуживания пикапов.
-     * Перебирает все операции, которые мы можем проводить над пикапом.
-     * @param truck - объект класса Truck, потомка Vehicle
-     */
-    public void checkTruck (Truck truck){
-        truck.updateTyres();
-        truck.checkEngine();
-        truck.checkTrailer();
-    }
 }
