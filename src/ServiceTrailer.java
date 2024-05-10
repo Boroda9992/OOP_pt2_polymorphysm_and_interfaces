@@ -1,4 +1,4 @@
 public interface ServiceTrailer {
-    default void checkTrailer(){}
+    void checkTrailer();
 
 }

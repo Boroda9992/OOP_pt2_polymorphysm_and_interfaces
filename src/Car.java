@@ -1,21 +1,16 @@
-/**
- * Класс автомобилей, наследующийся от Vehicle.
- * Реализует: ServiceEngine, ServiceTyres
- * Перегружает: checkEngine(), updateTyres()
- */
-public class Car extends Vehicle implements ServiceEngine, ServiceTyres {
+public class Car extends Vehicle {
     public Car(String modelName, int wheelsCount) {
         super(modelName, wheelsCount);
     }
 
     @Override
-    public void updateTyres() {
-        for (int i = 0; i < getWheelsCount(); i++) {
-        System.out.println("Car tyre " + (i + 1) + " updated!");
-        }
+    public String toString() {
+        return "Car";
     }
+
     @Override
-    public void checkEngine() {
-        System.out.println("Car engine checked!");
+    public void check() {
+        updateTyres();
+        checkEngine();
     }
 }

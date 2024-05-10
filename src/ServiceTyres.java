@@ -1,3 +1,3 @@
 public interface ServiceTyres {
-    default void updateTyres (){}
+    void updateTyres();
 }
